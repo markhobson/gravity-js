@@ -1,6 +1,6 @@
 # Gravity.js
 
-Gravitational orbits straight in your browser.
+Celestial bodies gravitating straight in your browser.
 
 ## Running locally
 
