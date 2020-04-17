@@ -1,3 +1,5 @@
+import Vector from "./Vector.js";
+
 function Universe(canvas, bodies) {
 	var self = this;
 	self.context = canvas.getContext('2d');
@@ -40,10 +42,17 @@ function Universe(canvas, bodies) {
 	function plot() {
 		var canvas = this.context.canvas;
 		this.context.clearRect(0, 0, canvas.width, canvas.height);
+		this.context.save();
+		
+		var centre = new Vector(canvas.width, canvas.height).scale(0.5);
+		var origin = centre.sub(bodiesCentre(bodies));
+		this.context.translate(origin.x, origin.y);
 
 		this.bodies.forEach(function (body) {
 			body.plot(this.context);
 		}, this);
+		
+		this.context.restore();
 	}
 
 	function tickObjects(dt) {
@@ -60,6 +69,16 @@ function Universe(canvas, bodies) {
 				}
 			}
 		}
+	}
+	
+	function bodiesCentre(bodies) {
+		return avg(bodies.map(function (body) { return body.position; }));
+	}
+	
+	function avg(vectors) {
+		return vectors
+			.reduce(function (u, v) { return u.add(v) })
+			.scale(1 / vectors.length);
 	}
 }
 
