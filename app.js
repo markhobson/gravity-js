@@ -1,12 +1,14 @@
 import Body from './Body.js';
 import Universe from './Universe.js';
+import Viewport from './Viewport.js';
 
 window.onload = run;
 	
 function run() {
 	var canvas = document.getElementById('app');
 	var bodies = randomBodies(3, canvas.clientWidth, canvas.clientHeight);
-	new Universe(canvas, bodies).run();
+	var universe = new Universe(bodies);
+	new Viewport(canvas, universe).run();
 }
 
 function randomBodies(n, width, height) {
