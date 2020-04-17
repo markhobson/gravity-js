@@ -1,0 +1,6 @@
+{
+	"name": "Gravity.js",
+	"display": "fullscreen",
+	"start_url": "index.html",
+	"background_color": "black"
+}
