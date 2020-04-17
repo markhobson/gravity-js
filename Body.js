@@ -38,7 +38,7 @@ function Body(x, y, radius, dx, dy, color) {
 		return this.position.sub(body.position).mod();
 	}
 	
-	function applyGravity(g, body) {
+	function applyGravity(g, body, dt) {
 		// obtain unit vector in direction of body
 		var d = body.position.sub(this.position).unit();
 		
@@ -50,7 +50,7 @@ function Body(x, y, radius, dx, dy, color) {
 		var a = d.scale(f / this.mass);
 		
 		// apply change in velocity
-		this.velocity = this.velocity.add(a);
+		this.velocity = this.velocity.add(a.scale(dt));
 	}
 }
 

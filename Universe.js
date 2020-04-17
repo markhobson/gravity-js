@@ -4,7 +4,7 @@ function Universe(canvas, bodies) {
 	var self = this;
 	self.context = canvas.getContext('2d');
 	// the gravitational constant
-	self.g = 1e-7;
+	self.g = 3e-9;
 	self.bodies = bodies;
 	self.timestamp = null;
 	self.run = run;
@@ -26,7 +26,7 @@ function Universe(canvas, bodies) {
 		this.resize();
 		this.plot();
 		this.tickObjects(dt);
-		this.applyGravity();
+		this.applyGravity(dt);
 		
 		this.run();
 	}
@@ -78,11 +78,11 @@ function Universe(canvas, bodies) {
 		});
 	}
 	
-	function applyGravity() {
+	function applyGravity(dt) {
 		for (var i = 0; i < bodies.length; i++) {
 			for (var j = 0; j < bodies.length; j++) {
 				if (i !== j) {
-					bodies[i].applyGravity(this.g, bodies[j]);
+					bodies[i].applyGravity(this.g, bodies[j], dt);
 				}
 			}
 		}
