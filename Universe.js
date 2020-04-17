@@ -1,7 +1,8 @@
 function Universe(bodies) {
-	var self = this;
 	// the gravitational constant
-	self.g = 3e-9;
+	var g = 3e-9;
+
+	var self = this;
 	self.bodies = bodies;
 	self.plot = plot;
 	self.plotGrid = plotGrid;
@@ -49,7 +50,7 @@ function Universe(bodies) {
 		for (var i = 0; i < bodies.length; i++) {
 			for (var j = 0; j < bodies.length; j++) {
 				if (i !== j) {
-					bodies[i].applyGravity(this.g, bodies[j], dt);
+					bodies[i].applyGravity(g, bodies[j], dt);
 				}
 			}
 		}
