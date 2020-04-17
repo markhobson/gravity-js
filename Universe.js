@@ -4,7 +4,7 @@ function Universe(canvas, bodies) {
 	var self = this;
 	self.context = canvas.getContext('2d');
 	// the gravitational constant
-	self.g = 1e-13;
+	self.g = 1e-7;
 	self.bodies = bodies;
 	self.timestamp = null;
 	self.run = run;

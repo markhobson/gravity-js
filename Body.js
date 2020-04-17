@@ -46,8 +46,11 @@ function Body(x, y, radius, dx, dy, color) {
 		var r = this.distance(body);
 		var f = g * this.mass * body.mass / r * r;
 		
+		// Newton's second law
+		var a = d.scale(f / this.mass);
+		
 		// apply change in velocity
-		this.velocity = this.velocity.add(d.scale(f));
+		this.velocity = this.velocity.add(a);
 	}
 }
 
