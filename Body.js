@@ -4,7 +4,8 @@ function Body(x, y, radius, dx, dy, color) {
 	var self = this;
 	self.position = new Vector(x, y);
 	self.radius = radius;
-	self.mass = mass(radius, 1);
+	self.density = 1
+	self.mass = mass(radius, self.density);
 	self.velocity = new Vector(dx, dy);
 	self.color = color;
 	self.plot = plot;
