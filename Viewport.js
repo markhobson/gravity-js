@@ -46,7 +46,7 @@ function Viewport(canvas, universe) {
 	function resize() {
 		var canvas = this.context.canvas;
 		
-		if (canvas.width != canvas.clientWidth || canvas.height != canvas.clientHeight) {
+		if (canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight) {
 			canvas.width = canvas.clientWidth;
 			canvas.height = canvas.clientHeight;			
 		}

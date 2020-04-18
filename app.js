@@ -43,7 +43,7 @@ function randomBody(width, height) {
 	var y = radius + Math.random() * (height - 2 * radius);
 	var dx = (Math.random() - 0.5) / 2;
 	var dy = (Math.random() - 0.5) / 2;
-	var color = '#' + parseInt(Math.random() * 0xFFFFFF).toString(16);
+	var color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 
 	return new Body(x, y, radius, dx, dy, color);
 }
