@@ -1,6 +1,8 @@
 import Vector from "./Vector.js";
 
 function Viewport(canvas, universe) {
+	var maxDt = 100;
+	
 	var self = this;
 	self.context = canvas.getContext('2d');
 	self.universe = universe;
@@ -17,6 +19,8 @@ function Viewport(canvas, universe) {
 	function tick(timestamp) {
 		var dt = timestamp - (this.timestamp || timestamp);
 		this.timestamp = timestamp;
+		// cap time delta to prevent huge movements after process sleeps
+		dt = Math.min(dt, maxDt);
 		
 		this.resize();
 		this.plot();
