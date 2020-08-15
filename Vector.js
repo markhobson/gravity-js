@@ -8,6 +8,7 @@ function Vector(x, y) {
 	self.unit = unit;
 	self.mod = mod;
 	self.dot = dot;
+	self.lerp = lerp;
 	
 	function add(v) {
 		return new Vector(this.x + v.x, this.y + v.y);
@@ -32,6 +33,14 @@ function Vector(x, y) {
 	function dot(v) {
 		v = v || this;
 		return this.x * v.x + this.y * v.y;
+	}
+	
+	function lerp(v, t) {
+		return new Vector(lerpScalar(this.x, v.x, t), lerpScalar(this.y, v.y, t));
+	}
+	
+	function lerpScalar(a, b, t) {
+		return (1 - t) * a + t * b;
 	}
 }
 
